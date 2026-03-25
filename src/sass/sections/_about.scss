@@ -7,5 +7,5 @@ $bg-section-about: token.$neutral-100;
   padding-block: token.$section-pad;
   background-color: $bg-section-about;
 
-  &__content, .card__content { @include mix.respond(md) { align-items: center; text-align: center; } }
+  .card__content { @include mix.respond(md) { align-items: center; text-align: center; } }
 }

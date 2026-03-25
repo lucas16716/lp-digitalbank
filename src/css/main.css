@@ -1439,7 +1439,7 @@ header #menu-toggle:focus-visible ~ .open-menu-toggle, header #menu-toggle:focus
   background-color: hsl(220, 16%, 96%);
 }
 @media (max-width: 767.98px) {
-  .about__content, .about .card__content {
+  .about .card__content {
     align-items: center;
     text-align: center;
   }
