@@ -1435,7 +1435,6 @@ header #menu-toggle:focus-visible ~ .open-menu-toggle, header #menu-toggle:focus
 }
 
 .about {
-  scroll-margin-top: 73px;
   padding-block: 6rem;
   background-color: hsl(220, 16%, 96%);
 }
