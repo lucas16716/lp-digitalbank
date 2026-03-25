@@ -1,0 +1,80 @@
+@use "../abstracts/tokens" as token;
+@use "../abstracts/mixins" as mix;
+
+// ===================================================
+// AXIS — CARD (Structural Component)
+// Neutral container, layout-driven
+// ===================================================
+
+// ---------------------------------------------------
+// Semantic Card Token
+// ---------------------------------------------------
+$transition-card:  token.$duration-200 token.$ease-standard;
+
+$shadow-card-hover: token.$shadow-md;
+$shadow-card-active: token.$shadow-sm;
+
+$gap-content-card: token.$gutter;
+$pad-content-card: token.$space-ui-24;
+
+// ---------------------------------------------------
+// Card Default
+// ---------------------------------------------------
+.card {
+  @include mix.flex($direction: column);
+  width: 100%;            
+  border: none;
+  max-width: none;
+  transition: transform $transition-card;
+  
+  // ---------------------------------------------------
+  // Interactive State
+  // ---------------------------------------------------
+  &.is-article {
+    position: relative;
+    cursor: pointer;
+
+    a {
+      transition: color $transition-card;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+    }
+    
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(-3px);
+
+        a { color: token.$green-primary; }
+      }
+    }
+    
+    &:focus-visible, &:focus-within { transform: translateY(-3px); }
+    &:active { transform: translateY(-1px); }
+
+    .card__image {
+      width: 100%;
+      height: 180px;
+    }
+  }
+
+  // ---------------------------------------------------
+  // Internal Structure
+  // ---------------------------------------------------
+  .card__content {
+    @include mix.flex($direction: column, $gap: $gap-content-card);
+    padding: $pad-content-card;
+
+    // ---------------------------------------------------
+    // Content Alignment Modifiers
+    // ---------------------------------------------------
+    &.is-center { align-items: center; text-align: center; }
+    &.is-start  { align-items: flex-start; text-align: start; }
+    &.is-end    { align-items: flex-end; text-align: end; }
+    &.is-article { gap: calc($gap-content-card / 2); }
+  }
+}

@@ -1,0 +1,12 @@
+@use "../abstracts/tokens" as token;
+@use "../abstracts/mixins" as mix;
+
+$bg-section-about: token.$neutral-100;
+
+.about {
+  scroll-margin-top: 73px;
+  padding-block: token.$section-pad;
+  background-color: $bg-section-about;
+
+  &__content, .card__content { @include mix.respond(md) { align-items: center; text-align: center; } }
+}

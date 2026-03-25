@@ -1,0 +1,28 @@
+// ===================================================
+// AXIS — COLORS (Primitive Layer) 
+// ===================================================
+
+// ---------------------------------------------------
+// Semantic Color Tokens - Digitalbank
+// ---------------------------------------------------
+
+// --- Primary ---
+$dark-primary:   hsl(233, 26%, 24%);  // Blue 950 
+$green-primary:  hsl(136, 64%, 51%);  // Green 500
+$blue-secondary: hsl(192, 69%, 51%);  // Cyan 400
+
+// --- Neutral ---
+$neutral-600:    hsl(233, 8%, 62%);        // Gray 600 
+$neutral-100:    hsl(220, 16%, 96%);       // Gray 100 
+$white:          hsl(0, 100%, 100%);       // White
+$white-opacity:  rgba(255, 255, 255, 0.8); // White com opacidade para efeito glassmorphism
+$black:          hsl(0, 0%, 0%);           // Black
+
+// --- Gradients ---
+$gradient-primary: linear-gradient(200deg, $green-primary, $green-primary, $blue-secondary);
+
+// ---------------------------------------------------
+// Semantic Color Tokens - Lucas Code
+// ---------------------------------------------------
+$blue-signature: #00aaff;
+$gray-signature: #5c6b82;  

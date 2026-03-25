@@ -1,0 +1,128 @@
+@use "../abstracts/tokens" as token;
+
+@font-face {
+    font-family: 'Clash Display';
+    src: url('../assets/fonts/ClashDisplay-Variable.ttf') format('truetype');
+    font-display: swap;
+}
+
+// ---------------------------------------------------
+// Semantic Typography Tokens - Digitalbank
+// ---------------------------------------------------
+$font-family-base: 'Public Sans', system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+$font-size-base:   token.$font-16;     // Base - Major Third 0
+$font-weight-base: token.$weight-400;  // Regular
+$line-height-base: token.$lh-normal;   // 1.5
+$font-color-base: token.$neutral-600;  // Gray 600 (Textos de parágrafos)
+
+$font-size-h1: token.$font-49;  // ~3.051rem (48.83px) - Major Third 5 | Título principal do site (Hero)
+$font-size-h2: token.$font-39;  // ~2.441rem (39.06px) - Major Third 4 | Títulos das seções 
+$font-size-h3: token.$font-20;  // 1.25rem   (20px) - Major Third 1
+$font-weight-heading: token.$weight-300;    // Light
+$line-height-heading: token.$lh-none;       // 1
+$font-color-heading: token.$dark-primary;   // Blue 950 (Títulos e botões escuros)
+
+$font-size-article: token.$font-18;         // 1.25rem   (20px) - Major Third 1 | Título dos Articles
+$font-size-txt-article: token.$font-13;     // 0.8rem    (~12.8px) - Major Third -1 | Texto dos Articles
+$line-height-txt-article: token.$lh-none;   // 1
+$font-weight-txt-author: token.$weight-600; // Bold
+
+$font-color-footer: token.$neutral-100; // Gray 100 (Texto do rodapé)
+$font-color-copy: token.$neutral-600; // Gray 600 (Texto do rodapé)
+$line-height-copy: token.$lh-none; // 1
+
+$signature-font-family: 'Clash Display', sans-serif;
+$font-size-signature: token.$font-13; 
+$font-weight-signature: token.$weight-800;
+$letter-spc-signature: token.$tracking-signature;
+$letter-spc-lucacouto-signature: token.$tracking-normal;
+$color-signature: token.$neutral-600;
+$color-lucas-signature: token.$neutral-100;
+$color-couto-signature: token.$blue-signature;
+
+
+// ---------------------------------------------------
+// Default Typography
+// ---------------------------------------------------
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size:   $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  color: $font-color-base;
+}
+
+// ---------------------------------------------------
+// Headings
+// ---------------------------------------------------
+h1, h2, h3 {
+  font-weight: $font-weight-heading;
+  line-height: $line-height-heading;
+  color: $font-color-heading;
+}
+
+h1 { font-size: $font-size-h1 }
+h2 { font-size: $font-size-h2 }
+h3 { font-size: $font-size-h3 }
+
+// ---------------------------------------------------
+// Articles
+// ---------------------------------------------------
+.articles {
+  // --- Título ---
+  a {
+    font-size: $font-size-article;
+    color: $font-color-heading;
+    line-height: $line-height-heading;
+    text-decoration: none;
+  }
+
+  // --- Texto ---
+  p {
+    &.from-article { 
+      font-size: $font-size-txt-article;
+      line-height: $line-height-txt-article; 
+
+      &.is-author { font-weight: $font-weight-txt-author }
+    } 
+  }
+}
+
+// ---------------------------------------------------
+// Footer
+// ---------------------------------------------------
+.footer {
+  color: $font-color-footer;
+  
+  .footer__ul-link { text-decoration: none; }
+
+  .copy {
+    color: $font-color-copy;
+    line-height: $line-height-copy; 
+  }
+}
+
+// ---------------------------------------------------
+// Signature
+// ---------------------------------------------------
+.footer__signature {
+  font-family: $signature-font-family;
+  font-size: $font-size-signature;
+  letter-spacing: $letter-spc-signature;
+  color: $color-signature;
+  text-transform: uppercase;
+
+  &-link {
+    font-weight: $font-weight-signature;
+    letter-spacing: $letter-spc-lucacouto-signature;
+    text-decoration: none;
+
+    .lucas { color: $color-lucas-signature; }
+    .couto { color: $color-couto-signature; }
+  }  
+}

@@ -1,0 +1,18 @@
+// ===================================================
+// AXIS — BREAKPOINTS (Primitive Tokens)
+// Desktop-first system
+// ===================================================
+
+// ---------------------------------------------------
+// Breakpoints Scale
+// ---------------------------------------------------
+$breakpoints: (
+  xxl: 1200px,
+  xl:  1024px,
+  lg:  992px,
+  md-2: 880px, // Custom breakpoint for specific layout adjustments
+  md:  768px,
+  sm:  576px,
+  xs:  480px,
+  xxs: 380px
+);

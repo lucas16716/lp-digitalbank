@@ -1,0 +1,171 @@
+@use "../abstracts/tokens" as token;
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/functions" as fn;
+
+// ---------------------------------------------------
+// Semantic Tokens
+// ---------------------------------------------------
+$bg-header-glass: token.$white-opacity;
+$border-nav: token.$neutral-100;
+$pad-nav: token.$gutter;
+
+$transition-nav: token.$duration-200 token.$ease-standard;
+$bg-underline-hover: token.$gradient-primary;
+$op0-link-hover: token.$opacity-0;
+$op1-link-hover: token.$opacity-100;
+
+$bg-menu-toggle: token.$white;
+$menu-toggle-rd: token.$radius-md;
+$menu-toggle-shadow: token.$shadow-md;
+$op0-menu-toggle: token.$opacity-0;
+$op1-menu-toggle: token.$opacity-100;
+$transition-menu-toggle: token.$duration-300 token.$ease-standard;
+
+// Trava o scroll da página quando o menu está aberto
+body:has(#menu-toggle:checked) { overflow: hidden; } 
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: fn.z(header);
+  background-color: $bg-header-glass;
+  backdrop-filter: blur(15px); // Prefixo necessário para funcionar no Safari (iPhones)
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid $border-nav;
+
+  @include mix.respond(md) { padding-block: $pad-nav; }
+
+  // --- Menu Desktop ---
+  ul {
+    @include mix.flex($gap: calc(8px + $pad-nav)); // gap = 32px
+
+    // Essencial para o funcionamento correto do underline hover
+    li {
+      position: relative; 
+      padding-block: $pad-nav;
+
+      // Essencial para aumentar a área de toque de cada item de navegação
+      a {
+        padding-block: $pad-nav;
+        text-decoration: none;
+      }
+
+      // Linha de hover (underline animado)
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: $bg-underline-hover;
+        opacity: $op0-link-hover;
+        transition:
+          background $transition-nav,
+          opacity $transition-nav;
+
+        @include mix.respond(md) { display: none; } // Menu Toggle ativado = remove o underline hover
+      }
+
+      &:hover,
+      &:focus-within {
+        color: fn.color-dark(token.$neutral-600, 80%);
+        &::after { opacity: $op1-link-hover; }
+      }
+    }
+
+    // --- Menu Toggle (Mobile) ---
+    @include mix.respond(md) {
+      display: flex;
+      position: absolute;
+      top: calc(100% + $pad-nav); // gap de 24px abaixo do header
+      left: 50%;
+      width: 90%;
+      z-index: fn.z(dropdown);
+
+      flex-direction: column;
+      gap: 0;
+      padding-block: calc($pad-nav - 16px); // 8px - ajuste visual do espaçamento no top/bottom do menu
+
+      font-size: 1rem; // 16px - tamanho base para o menu mobile (sem clamp)
+      border-radius: $menu-toggle-rd;
+      box-shadow: $menu-toggle-shadow;
+      background-color: $bg-menu-toggle;
+
+      visibility: hidden;
+      opacity: $op0-menu-toggle;
+      transform: translate(-50%, -20px);
+      transition:
+        opacity $transition-menu-toggle,
+        transform $transition-menu-toggle,
+        visibility $transition-menu-toggle;
+
+      li {
+        width: 100%;
+        padding-block: 0;
+
+        a {
+          display: block;
+          padding: calc($pad-nav - 12px); // 12px
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  // --- Menu overlay ---
+  .menu-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(45, 49, 77, 0.6);
+    z-index: fn.z(dropdown) -1;
+    opacity: $op0-menu-toggle;
+    visibility: hidden;
+    transition:
+      opacity $transition-menu-toggle,
+      visibility $transition-menu-toggle,
+      height 0s token.$duration-300;
+  }
+
+  // --- Acessibilidade do Menu Toggle ---
+  #menu-toggle:focus-visible {
+    & ~ .open-menu-toggle,
+    & ~ .close-menu-toggle {
+      @include mix.focus-ring;
+    }
+  }
+
+  // --- Funcionalidade do Menu Toggle ---
+  @include mix.respond(md) {
+    .close-menu-toggle { display: none; } // Esconde o ícone de fechar no mobile
+
+    #menu-toggle:checked {
+      & ~ .open-menu-toggle { display: none; } // Esconde o ícone de abrir quando o menu está aberto
+      & ~ .close-menu-toggle { display: block; } // Exibe o ícone de fechar quando o menu está aberto
+
+      // Exibe o Overlay
+      & ~ .menu-overlay {
+        opacity: $op1-menu-toggle;
+        visibility: visible;
+        height: 100vh;
+        height: 100dvh;
+        transition:
+          opacity $transition-menu-toggle,
+          visibility $transition-menu-toggle,
+          height 0s;
+      }
+
+      // Exibe a lista de navegação
+      & ~ ul {
+        opacity: $op1-menu-toggle;
+        visibility: visible;
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+}
+

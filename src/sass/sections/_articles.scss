@@ -1,0 +1,7 @@
+@use "../abstracts/tokens" as token;
+
+.articles {
+    padding-block: token.$section-pad;
+
+    &__grid { margin-top: calc(token.$section-pad / 2); }
+}
