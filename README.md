@@ -22,7 +22,7 @@
 
 <h2 id="projeto">PROJETO</h2>
 
-Solução para o desafio [Digitalbank Landing Page](https://www.frontendmentor.io/challenges/digitalbank-landing-page-WaUhkoDN) do Frontend Mentor, desenvolvida como exercício prático de arquitetura Sass.
+Solução para o desafio [Digitalbank Landing Page](https://www.frontendmentor.io/challenges/digital-bank-landing-page-WaUhkoDN) do Frontend Mentor, desenvolvida como exercício prático de arquitetura Sass.
 
 O objetivo não foi apenas replicar o layout — foi aplicar o [AXIS](https://github.com/lucas16716/axis), minha própria arquitetura Sass, em um projeto real, consolidando a disciplina de tokens de design, sistema de componentes e responsividade fluida, além de aplicar práticas imprecindíveis de acessibilidade.
 
