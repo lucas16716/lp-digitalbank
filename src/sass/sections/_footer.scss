@@ -37,9 +37,7 @@ $transition-signature: token.$duration-300 token.$ease-standard;
                 display: block;
                 border-radius: 50%;
 
-                img { transition: filter $transition-footer; }
-                
-                &:hover, &:focus-visible { filter: $hover-social-link; }   
+                img { transition: filter $transition-footer; &:hover, &:focus-visible { filter: $hover-social-link; } }     
             }
         } 
     }

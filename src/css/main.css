@@ -1438,6 +1438,9 @@ header #menu-toggle:focus-visible ~ .open-menu-toggle, header #menu-toggle:focus
   padding-block: 6rem;
   background-color: hsl(220, 16%, 96%);
 }
+.about .card__content {
+  padding-inline: 0;
+}
 @media (max-width: 767.98px) {
   .about .card__content {
     align-items: center;
@@ -1512,7 +1515,7 @@ header #menu-toggle:focus-visible ~ .open-menu-toggle, header #menu-toggle:focus
 .footer__social-list .footer__social-item a img {
   transition: filter 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.footer__social-list .footer__social-item a:hover, .footer__social-list .footer__social-item a:focus-visible {
+.footer__social-list .footer__social-item a img:hover, .footer__social-list .footer__social-item a img:focus-visible {
   filter: brightness(0) saturate(100%) invert(59%) sepia(99%) saturate(352%) hue-rotate(83deg) brightness(93%) contrast(92%);
 }
 .footer__nav-list {
